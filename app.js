@@ -22,7 +22,7 @@ function addItem() {
         alert('Please enter both item name and price!');
     } else if (isNaN(itemPriceInput) || Number(itemPriceInput) <= 0 || !isNaN(itemNameInput)) {
         alert('Please enter a valid item price and name!');
-    } else if(remainingBudget - Number(itemPriceInput) <= 0){
+    } else if(remainingBudget - Number(itemPriceInput) < 0){
         alert('Insufficient budget to add this item!');
     }else{
         remainingBudget -= Number(itemPriceInput);
