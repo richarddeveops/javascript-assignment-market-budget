@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -134,6 +134,56 @@
             <div id="cartItems"></div>
         </section>
     </main>
+    <script src="app.js"></script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Budget</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="glass-card">
+        <header class="app-header">
+            <h2>Market Budget</h2>
+            <div class="budget-display">
+                <span class="budget-label">Remaining Budget</span>
+                <div class="budget-amount">
+                    $<span id="showBudget">0</span>
+                </div>
+            </div>
+        </header>
+
+        <section class="form-section">
+            <h3>Set Your Budget</h3>
+            <label for="budgetInput">Budget Amount</label>
+            <div class="input-group">
+                <input type="number" id="budgetInput" placeholder="e.g. 500">
+                <button id="setBudgetBtn" onclick="setBudget()">Set Budget</button>
+            </div>
+        </section>
+
+        <section class="form-section">
+            <h3>Add an Item</h3>
+            <div class="item-inputs">
+                <div>
+                    <label for="itemNameInput">Item Name</label>
+                    <input type="text" id="itemNameInput" placeholder="e.g. Groceries">
+                </div>
+                <div>
+                    <label for="itemPriceInput">Item Price ($)</label>
+                    <input type="number" id="itemPriceInput" placeholder="e.g. 45">
+                </div>
+            </div>
+            <button id="addItemBtn" class="full-btn" onclick="addItem()">+ Add Item to Cart</button>
+
+            <div id="cartItems" class="cart-list"></div>
+        </section>
+    </main>
+
     <script src="app.js"></script>
 </body>
 </html>
