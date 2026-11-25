@@ -11,7 +11,7 @@
     -moz-osx-font-smoothing: grayscale;
     --text: #f3f7fb;
     --muted: #b6c4d2;
-    --accent: #6de0b0;
+    --accent: #73f5df;
     --line: rgba(226, 239, 250, 0.14);
 }
 
@@ -31,25 +31,66 @@ body::before {
     position: fixed;
     z-index: -1;
     inset: 0;
-    background: linear-gradient(135deg, rgba(7, 15, 25, 0.78), rgba(9, 20, 32, 0.58));
+    background:
+        radial-gradient(ellipse at 14% 18%, rgba(84, 105, 255, 0.2), transparent 38%),
+        radial-gradient(ellipse at 86% 76%, rgba(44, 218, 227, 0.16), transparent 40%),
+        linear-gradient(135deg, rgba(7, 15, 25, 0.76), rgba(9, 20, 32, 0.56));
     content: "";
 }
 
 .glass-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     width: min(100%, 560px);
     padding: clamp(24px, 5vw, 40px);
-    border: 1px solid rgba(231, 242, 255, 0.2);
+    border: 1px solid rgba(231, 242, 255, 0.34);
     border-radius: 28px;
-    background: linear-gradient(145deg, rgba(28, 43, 58, 0.83), rgba(17, 29, 42, 0.78));
-    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    -webkit-backdrop-filter: blur(22px);
-    backdrop-filter: blur(22px);
+    background: linear-gradient(135deg, rgba(224, 240, 255, 0.17), rgba(34, 55, 74, 0.48) 58%, rgba(14, 28, 42, 0.53));
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.42), 0 0 48px rgba(69, 161, 255, 0.11), inset 0 1px 0 rgba(255, 255, 255, 0.28), inset 1px 0 0 rgba(255, 255, 255, 0.09);
+    -webkit-backdrop-filter: blur(28px) saturate(165%);
+    backdrop-filter: blur(28px) saturate(165%);
+}
+
+.glass-card::before {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.15), transparent 38%, rgba(102, 202, 255, 0.05));
+    content: "";
+    pointer-events: none;
+}
+
+.glass-card > * {
+    position: relative;
+    z-index: 1;
 }
 
 .app-header {
     display: grid;
-    gap: 22px;
+    gap: 10px;
     text-align: center;
+}
+
+.eyebrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    margin: 0 0 1px;
+    color: #b7c8df;
+    font-size: 0.67rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+}
+
+.status-indicator {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px rgba(115, 245, 223, 0.9);
 }
 
 h2 {
@@ -60,18 +101,27 @@ h2 {
     letter-spacing: -0.045em;
 }
 
+.app-tagline {
+    margin: -4px 0 8px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    letter-spacing: 0.01em;
+}
+
 .budget-display {
     padding: 22px 24px;
-    border: 1px solid rgba(109, 224, 176, 0.25);
+    border: 1px solid rgba(146, 255, 239, 0.36);
     border-radius: 20px;
-    background: linear-gradient(125deg, rgba(48, 125, 103, 0.34), rgba(109, 224, 176, 0.12));
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.09), 0 12px 34px rgba(3, 10, 17, 0.16);
+    background: linear-gradient(125deg, rgba(70, 224, 196, 0.23), rgba(70, 137, 255, 0.13));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 12px 34px rgba(3, 10, 17, 0.16);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
 }
 
 .budget-label {
     display: block;
     margin-bottom: 7px;
-    color: #c1e8d8;
+    color: #b6fff1;
     font-size: 0.76rem;
     font-weight: 650;
     letter-spacing: 0.12em;
@@ -147,19 +197,19 @@ input::placeholder {
 }
 
 input:focus {
-    border-color: rgba(109, 224, 176, 0.78);
+    border-color: rgba(115, 245, 223, 0.78);
     background: rgba(8, 17, 27, 0.62);
-    box-shadow: 0 0 0 4px rgba(109, 224, 176, 0.14);
+    box-shadow: 0 0 0 4px rgba(115, 245, 223, 0.14), 0 0 18px rgba(76, 195, 255, 0.1);
 }
 
 button {
     min-height: 48px;
     padding: 0 18px;
-    border: 1px solid rgba(181, 255, 222, 0.24);
+    border: 1px solid rgba(199, 255, 248, 0.34);
     border-radius: 12px;
-    background: linear-gradient(135deg, #39bb8a, #249b72);
-    box-shadow: 0 7px 18px rgba(21, 148, 105, 0.2);
-    color: #062217;
+    background: linear-gradient(115deg, #64e6c6, #52baf5);
+    box-shadow: 0 7px 22px rgba(44, 190, 208, 0.24);
+    color: #082333;
     cursor: pointer;
     font: inherit;
     font-size: 0.88rem;
@@ -170,7 +220,7 @@ button {
 
 button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 11px 22px rgba(21, 148, 105, 0.3);
+    box-shadow: 0 11px 26px rgba(44, 190, 208, 0.35);
     filter: brightness(1.07);
 }
 
@@ -179,7 +229,7 @@ button:active {
 }
 
 button:focus-visible {
-    outline: 3px solid rgba(109, 224, 176, 0.48);
+    outline: 3px solid rgba(115, 245, 223, 0.55);
     outline-offset: 3px;
 }
 
@@ -226,12 +276,19 @@ button:focus-visible {
     gap: 16px;
     margin: 0;
     padding: 14px 16px;
-    border: 1px solid rgba(226, 239, 250, 0.13);
+    border: 1px solid rgba(139, 218, 255, 0.22);
     border-radius: 14px;
-    background: rgba(228, 241, 252, 0.07);
+    background: linear-gradient(120deg, rgba(161, 214, 255, 0.13), rgba(228, 241, 252, 0.045));
     color: #edf4fa;
     font-size: 0.92rem;
     animation: item-enter 320ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.cart-item:hover {
+    border-color: rgba(115, 245, 223, 0.34);
 }
 
 .cart-item strong {
